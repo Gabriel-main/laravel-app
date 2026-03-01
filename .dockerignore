@@ -1,0 +1,25 @@
+# Git
+.git
+.gitignore
+
+# Dependencias de PHP y JS (Docker las instalará internamente)
+node_modules
+vendor
+
+# Logs y Caché de Laravel
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*.php
+storage/logs/*.log
+
+# Archivos de entorno y configuración local
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+user.ini
+
+# Archivos de sistema y editores
+.DS_Store
+.idea
+.vscode
