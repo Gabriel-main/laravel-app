@@ -1,0 +1,49 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+
+
+
+/* Animación para que suba suavemente */
+/* Animación de entrada (la que ya tienes) */
+dialog[open] div.fixed {
+    animation: slide-down 0.3s ease-out;
+}
+
+/* Agregamos especificidad para que sobrescriba a la animación de entrada */
+dialog[open].closing div.fixed {
+    animation: slide-up 0.3s ease-in forwards;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}

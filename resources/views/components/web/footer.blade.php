@@ -1,5 +1,5 @@
 <footer class="bg-white border-t border-slate-200">
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-8 lg:py-12">
+    <div class="mx-auto w-full max-w-7xl p-12 py-8 lg:py-12">
         <div class="md:flex md:justify-between">
             <div class="mb-8 md:mb-0">
                 <a href="#" class="flex items-center gap-3">
@@ -8,10 +8,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </div>
-                    <span class="self-center text-2xl font-bold whitespace-nowrap text-slate-900 tracking-tight">SalesAdmin</span>
+                    <span class="self-center text-2xl font-bold whitespace-nowrap text-slate-900 tracking-tight">Ventor</span>
                 </a>
                 <p class="mt-4 text-slate-500 max-w-xs text-sm leading-relaxed">
-                    Potenciando el crecimiento de negocios con herramientas de administración de ventas inteligentes y fáciles de usar.
+                    Potenciando el crecimiento de finanzas con herramientas de administración de gastos inteligentes y fáciles de usar.
                 </p>
             </div>
 
@@ -55,7 +55,7 @@
         <hr class="my-8 border-slate-100 sm:mx-auto lg:my-10" />
 
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-slate-500 sm:text-center">© 2026 <a href="#" class="hover:text-indigo-600 font-semibold">SalesAdmin™</a>. Todos los derechos reservados.
+            <span class="text-sm text-slate-500 sm:text-center">© 2026 <a href="#" class="hover:text-indigo-600 font-semibold">Ventor™</a>. Todos los derechos reservados.
             </span>
             <div class="flex mt-4 sm:justify-center sm:mt-0 space-x-5">
                 <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors">

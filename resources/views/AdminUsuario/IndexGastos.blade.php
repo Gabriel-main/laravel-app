@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <section class="pt-28 pb-12 px-4 lg:px-8 bg-slate-50 min-h-screen">
     <div class="max-w-5xl mx-auto">
         
@@ -90,7 +84,4 @@
         </div>
     </div>
 </section>
-
-    
-
 </x-app-layout>

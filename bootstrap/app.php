@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware('web') // Le da seguridad (CSRF, Cookies, Sesión)
-                ->name('admin.')     // Prefijo para los nombres de las rutas
+                ->name('ventor.')     // Prefijo para los nombres de las rutas
                 ->group(base_Path('routes/web/paginaWeb.php'));
         },
     )
