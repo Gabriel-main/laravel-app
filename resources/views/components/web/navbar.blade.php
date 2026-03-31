@@ -1,5 +1,5 @@
-<header class="absolute inset-x-0 top-0 z-50">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-8 lg:px-8" aria-label="Global">
+<header class="fixed inset-x-0 top-0 w-full bg-white border-b border-gray-100 transition-all duration-500 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'} z-50 shadow-2xs">
+    <nav class="mx-auto flex max-w-7xl items-center  justify-between p-9 md:p-5 lg:px-8" aria-label="Global">
 
         <div class="flex lg:flex-1">
             <a href="{{ route('ventor.pagina-index') }}" class="-m-1.5 p-1.5 flex items-center gap-3">
