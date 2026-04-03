@@ -22,14 +22,16 @@ new class extends Component
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                <div class="flex lg:flex-1">
+                    <a href="{{ route('dashboard') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
+                        <x-application-logo />
+                        
                     </a>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 px-3 py-4.5">Ventor</span>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ms-34 sm:flex">
+                <div class="hidden space-x-13 sm:-my-px sm:ms-68 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Inicio') }}
                     </x-nav-link>
