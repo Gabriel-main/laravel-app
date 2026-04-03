@@ -16,12 +16,8 @@
             <div class="fixed inset-y-auto top-0 left-0 z-100 w-full overflow-y-auto bg-white p-8 sm:max-w-sm shadow-2xl rounded-b-4xl">
                 
                 <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5 flex items-center gap-3">
-                        <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                            </svg>
-                        </div>
+                    <a href="{{ route('ventor.pagina-index') }}" class="-m-1.5 p-1.5 flex items-center gap-3">
+                        <x-application-logo/>
                         <span class="text-xl font-bold tracking-tight text-slate-900">Ventor</span>
                     </a>
                     

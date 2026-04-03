@@ -1,6 +1,6 @@
 <x-home-layout>
 
-    <section class="py-24 bg-white overflow-hidden">
+    <section class="py-30 sm:py-26 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-12 lg:px-8">
 
             <div class="text-center mb-20">
