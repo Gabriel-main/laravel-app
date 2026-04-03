@@ -12,7 +12,7 @@
     
     <x-web.navbar/>
 
-    <main>
+    <main class="animate-view" wire:key="{{ Request::url() }}">
         {{ $slot }} 
     </main>
 

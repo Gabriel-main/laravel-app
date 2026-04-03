@@ -80,3 +80,22 @@ dialog.closing div.fixed {
         transform: translateY(-100%);
     }
 }
+
+/* Ventana */
+@keyframes modalFadeIn {
+    0% {
+        opacity: 0 !important;
+        transform: scale(0.9) translateY(20px) !important;
+    }
+
+    100% {
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+    }
+}
+
+.modal-animacion {
+    /* Forzamos que la animación se ejecute en cuanto el elemento entre al DOM */
+    animation: modalFadeIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+    will-change: transform, opacity;
+}

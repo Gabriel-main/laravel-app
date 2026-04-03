@@ -1,8 +1,8 @@
 <x-app-layout>
-    <section class="pt-28 pb-12 px-4 lg:px-8 bg-slate-50 min-h-screen">
+    <section class="pt-12 pb-12 px-8 lg:px-8 bg-slate-50 min-h-screen">
     <div class="max-w-5xl mx-auto">
         
-        <div class="bg-indigo-600 rounded-3xl p-6 sm:p-10 text-white shadow-xl shadow-indigo-100 mb-8 relative overflow-hidden">
+        <div class="bg-indigo-600 rounded-3xl p-6 sm:p-0 text-white shadow-xl shadow-indigo-100 mb-8 relative overflow-hidden">
             <div class="relative z-10">
                 <p class="text-indigo-100 text-sm font-medium mb-1">Balance Total</p>
                 <h2 class="text-4xl sm:text-5xl font-black tracking-tight mb-6">$12,450.80</h2>

@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex lg:flex-1">
-                    <a href="{{ route('dashboard') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
+                    <a href="{{ route('inicio') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
                         <x-application-logo />
                         
                     </a>
@@ -14,17 +14,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-13 sm:-my-px sm:ms-68 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
                         {{ __('Inicio') }}
                     </x-nav-link>
                     <x-nav-link :href="route('gastos')" :active="request()->routeIs('gastos')" wire:navigate>
                         {{ __('Mis gastos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
                         {{ __('Mis presupuestos') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
                         {{ __('Analisis') }}
                     </x-nav-link>
                 </div>

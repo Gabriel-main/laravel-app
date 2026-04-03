@@ -38,7 +38,7 @@
                 <div class="mt-8 flow-root">
                     <div class="-my-6 divide-y divide-slate-100">
                         <div class="pt-2 pb-3 space-y-1">
-                            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate
+                            <x-responsive-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate
                                 wire:click="closeMenu">
                                 {{ __('Inicio') }}
                             </x-responsive-nav-link>
@@ -61,7 +61,7 @@
                             <!-- Authentication -->
                             <button wire:click="logout" class="w-full text-start">
                                 <x-responsive-nav-link>
-                                    {{ __('logout') }}
+                                    {{ __('Cerrar sesion') }}
                                 </x-responsive-nav-link>
                             </button>
                         </div>
