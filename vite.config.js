@@ -13,7 +13,7 @@ export default defineConfig({
     server: { // <--- Añade esto
         host: '0.0.0.0',
         hmr: {
-            host: '192.168.10.104'
+            host: '192.168.10.106'
         },
         watch: {
             usePolling: true, // VITAL para WSL: obliga a revisar cambios de archivos
