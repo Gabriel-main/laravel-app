@@ -17,15 +17,48 @@
 
 
 
-/* Animación para que suba suavemente */
-/* Animación de entrada (la que ya tienes) */
-dialog[open] div.fixed {
-    animation: slide-down 0.3s ease-out;
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Agregamos especificidad para que sobrescriba a la animación de entrada */
-dialog[open].closing div.fixed {
-    animation: slide-up 0.3s ease-in forwards;
+@keyframes slide-up {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Animación de entrada */
+dialog[open] div.fixed {
+    animation: slide-down 0.3s ease-out forwards;
+}
+
+/* Animación de salida - La clase .closing debe estar en el dialog */
+dialog.closing div.fixed {
+    animation: slide-up 0.3s ease-in forwards !important;
+}
+
+/* Animación de entrada (cuando el dialog está abierto pero NO cerrándose) */
+#menu-mobile-admin[open] div.fixed {
+    animation: slide-down 0.3s ease-out forwards;
+}
+
+/* Animación de salida (cuando tiene la clase .closing) */
+#menu-mobile-admin.closing div.fixed {
+    animation: slide-up 0.3s ease-in forwards !important;
 }
 
 @keyframes slide-down {

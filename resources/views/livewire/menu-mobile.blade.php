@@ -16,7 +16,7 @@
             <div class="fixed inset-y-auto top-0 left-0 z-100 w-full overflow-y-auto bg-white p-8 sm:max-w-sm shadow-2xl rounded-b-4xl">
                 
                 <div class="flex items-center justify-between">
-                    <a href="{{ route('ventor.pagina-index') }}" class="-m-1.5 p-1.5 flex items-center gap-3">
+                    <a class="-m-1.5 p-1.5 flex items-center gap-3">
                         <x-application-logo/>
                         <span class="text-xl font-bold tracking-tight text-slate-900">Ventor</span>
                     </a>
@@ -31,19 +31,19 @@
 
                 <div class="mt-8 flow-root">
                     <div class="-my-6 divide-y divide-slate-100">
-                        <div class="space-y-3 py-6 text-center">
-                            <a href="{{ route('ventor.pagina-index') }}" wire:navigate wire:click="closeMenu"
-                                class="-mx-3 block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50 transition">
-                                Inicio
-                            </a>
-                            <a href="{{ route('ventor.pagina-descripcion') }}" wire:navigate wire:click="closeMenu"
-                                class="-mx-3 block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50 transition">
-                                Que es
-                            </a>
-                            <a href="{{ route('ventor.pagina-destalles') }}" wire:navigate wire:click="closeMenu"
-                                class="-mx-3 block rounded-xl px-4 py-3 text-base font-semibold text-slate-900 hover:bg-slate-50 transition">
-                                Características
-                            </a>
+                        <div class="pt-2 pb-3 space-y-1">
+                            <x-responsive-nav-link :href="route('ventor.pagina-index')" :active="request()->routeIs('ventor.pagina-index')" wire:navigate
+                                wire:click="closeMenu">
+                                {{ __('Inicio') }}
+                            </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('ventor.pagina-descripcion')" :active="request()->routeIs('ventor.pagina-descripcion')" wire:navigate
+                                wire:click="closeMenu">
+                                {{ __('Que es') }}
+                            </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('ventor.pagina-destalles')" :active="request()->routeIs('ventor.pagina-destalles')" wire:navigate
+                                wire:click="closeMenu">
+                                {{ __('Características') }}
+                            </x-responsive-nav-link>
                         </div>
                         <div class="py-6 px-6 space-y-4">
                             <a href="{{ route('login') }}" class="block text-center rounded-xl bg-slate-900 px-4 py-4 text-base font-semibold text-olive-50 shadow-lg">Inicia sesion</a>
