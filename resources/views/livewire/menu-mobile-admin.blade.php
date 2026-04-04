@@ -50,6 +50,10 @@
                                 wire:click="closeMenu">
                                 {{ __('Mis presupuestos') }}
                             </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('reportes')" :active="request()->routeIs('reportes')" wire:navigate
+                                wire:click="closeMenu">
+                                {{ __('Reportes') }}
+                            </x-responsive-nav-link>
                         </div>
                         <div class="px-4">
                             <div class="font-medium text-base text-gray-800" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"

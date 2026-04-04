@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="px-12 py-6 bg-gray-50 min-h-full">
+    <section class="px-12 sm:px-34 py-6 bg-gray-50 min-h-full">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
                 <h1 class="text-2xl font-bold text-gray-800">Historial de Gastos</h1>
@@ -34,7 +34,56 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="overflow-x-auto">
+
+            {{-- @foreach ($gastos as $gasto) --}}
+
+            <div
+                class="block sm:hidden border-b border-gray-50 last:border-0 p-4 group hover:bg-blue-50/30 transition-all duration-200">
+                <div class="flex justify-between items-start">
+
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 group-hover:bg-white transition-colors shadow-sm shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-800 leading-tight mb-1">Suscripción Netflix</h4>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-semibold text-gray-500">02 Abr</span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span
+                                    class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-600 border border-purple-100">
+                                    Entretenimiento
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-right shrink-0 ml-2">
+                        <span class="text-sm font-black text-red-500">-$15.99</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-end items-center mt-3 pt-3 border-t border-gray-50 border-dashed gap-2">
+                    <livewire:gastos.detalle-gasto />
+                    <button
+                        class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1"
+                        title="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        <span class="text-xs font-bold sm:hidden">Borrar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hidden sm:block overflow-x-auto">
                 <table class="w-full text-left border-separate border-spacing-0">
                     <thead>
                         <tr class="bg-gray-50/50">
@@ -56,7 +105,6 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-50">
-                        {{-- @foreach ($gastos as $gasto) --}}
                         <tr class="group hover:bg-blue-50/30 transition-all duration-200">
                             <td class="px-6 py-5">
                                 <div class="flex flex-col">
@@ -64,7 +112,6 @@
                                     <span class="text-xs text-gray-400">2026</span>
                                 </div>
                             </td>
-
                             <td class="px-6 py-5">
                                 <div class="flex items-center">
                                     <div
@@ -79,7 +126,6 @@
                                         Netflix</span>
                                 </div>
                             </td>
-
                             <td class="px-6 py-5">
                                 <span
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-50 text-purple-600 border border-purple-100">
@@ -87,17 +133,12 @@
                                     Entretenimiento
                                 </span>
                             </td>
-
                             <td class="px-6 py-5">
-                                <span class="text-sm font-bold text-red-500">
-                                    -$15.99
-                                </span>
+                                <span class="text-sm font-bold text-red-500">-$15.99</span>
                             </td>
-
                             <td class="px-6 py-5 text-right">
                                 <div class="flex justify-end items-center space-x-2">
                                     <livewire:gastos.detalle-gasto />
-
                                     <button
                                         class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                                         title="Eliminar">
@@ -110,10 +151,12 @@
                                 </div>
                             </td>
                         </tr>
-                        {{-- @endforeach --}}
                     </tbody>
                 </table>
             </div>
+
+            {{-- @endforeach --}}
+
         </div>
 
         <div class="px-6 py-5 bg-white border-t border-gray-100 flex items-center justify-between">

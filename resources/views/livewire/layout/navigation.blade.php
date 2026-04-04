@@ -42,7 +42,7 @@ new class extends Component
                         {{ __('Mis presupuestos') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
+                    <x-nav-link :href="route('reportes')" :active="request()->routeIs('reportes')" wire:navigate>
                         {{ __('Analisis') }}
                     </x-nav-link>
                 </div>

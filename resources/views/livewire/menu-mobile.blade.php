@@ -12,15 +12,15 @@
     @if($isOpen)
         <dialog id="menu-mobile" open
             class="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 backdrop:bg-slate-900/40 {{ $isClosing ? 'closing' : '' }}">
-            
+
             <div class="fixed inset-y-auto top-0 left-0 z-100 w-full overflow-y-auto bg-white p-8 sm:max-w-sm shadow-2xl rounded-b-4xl">
-                
+
                 <div class="flex items-center justify-between">
                     <a class="-m-1.5 p-1.5 flex items-center gap-3">
                         <x-application-logo/>
                         <span class="text-xl font-bold tracking-tight text-slate-900">Ventor</span>
                     </a>
-                    
+
                     <button type="button" wire:click="closeMenu" class="-m-2.5 rounded-md p-2.5 text-slate-700">
                         <span class="sr-only">Cerrar menú</span>
                         <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -44,6 +44,7 @@
                                 wire:click="closeMenu">
                                 {{ __('Características') }}
                             </x-responsive-nav-link>
+                            
                         </div>
                         <div class="py-6 px-6 space-y-4">
                             <a href="{{ route('login') }}" class="block text-center rounded-xl bg-slate-900 px-4 py-4 text-base font-semibold text-olive-50 shadow-lg">Inicia sesion</a>
