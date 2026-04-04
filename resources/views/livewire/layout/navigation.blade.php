@@ -25,7 +25,7 @@ new class extends Component
                 <div class="flex lg:flex-1">
                     <a href="{{ route('inicio') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
                         <x-application-logo />
-                        
+
                     </a>
                     <span class="text-xl font-bold tracking-tight text-slate-900 px-3 py-4.5">Ventor</span>
                 </div>
@@ -38,10 +38,10 @@ new class extends Component
                     <x-nav-link :href="route('gastos')" :active="request()->routeIs('gastos')" wire:navigate>
                         {{ __('Mis gastos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
+                    <x-nav-link :href="route('presupuestos')" :active="request()->routeIs('presupuestos')" wire:navigate>
                         {{ __('Mis presupuestos') }}
                     </x-nav-link>
-                    
+
                     <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
                         {{ __('Analisis') }}
                     </x-nav-link>
@@ -86,5 +86,5 @@ new class extends Component
     </div>
 
     <!-- Responsive Navigation Menu -->
-    
+
 </nav>

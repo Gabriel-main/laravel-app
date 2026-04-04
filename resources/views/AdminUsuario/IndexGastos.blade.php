@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="pt-12 pb-12 px-8 lg:px-8 bg-slate-50 min-h-screen">
+    <section class="pt-12 sm:pb-12 px-8 lg:px-8 bg-slate-50 min-h-full">
         <div class="max-w-5xl mx-auto">
 
             <div

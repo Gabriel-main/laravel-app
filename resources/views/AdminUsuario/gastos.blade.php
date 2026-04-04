@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="px-12 py-6 bg-gray-50 min-h-screen">
+    <section class="px-12 py-6 bg-gray-50 min-h-full">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
                 <h1 class="text-2xl font-bold text-gray-800">Historial de Gastos</h1>
@@ -97,7 +97,7 @@
                             <td class="px-6 py-5 text-right">
                                 <div class="flex justify-end items-center space-x-2">
                                     <livewire:gastos.detalle-gasto />
-                                    
+
                                     <button
                                         class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                                         title="Eliminar">

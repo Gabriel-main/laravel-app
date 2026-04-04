@@ -12,8 +12,11 @@ export default defineConfig({
     ],
     server: { // <--- Añade esto
         host: '0.0.0.0',
+        port: 5173,
+        cors: true,
         hmr: {
-            host: '192.168.10.106'
+            host: '192.168.10.106',
+            port: 5173,
         },
         watch: {
             usePolling: true, // VITAL para WSL: obliga a revisar cambios de archivos
