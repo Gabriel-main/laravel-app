@@ -35,7 +35,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class="mt-8 sm:mx-auto px-12 sm:w-full sm:max-w-md">
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <div >
         <form wire:submit="register" class="space-y-5">
             <!-- Name -->
@@ -75,7 +75,7 @@ new #[Layout('layouts.guest')] class extends Component {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                <a class="font-semibold text-indigo-600 hover:text-indigo-500"
                     href="{{ route('login') }}" wire:navigate>
                     {{ __('¿Ya tienes una cuenta?') }}
                 </a>
