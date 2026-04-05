@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
-{
+new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
 
     /**
@@ -24,7 +23,12 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
+
+
 <div clas="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="text-center pb-6 text-lg sm:text-xl font-black tracking-tight text-slate-900">
+        Inicia sesión en tu cuenta
+    </h2>
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -33,7 +37,8 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
+            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email"
+                required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
         </div>
 
@@ -44,18 +49,18 @@ new #[Layout('layouts.guest')] class extends Component
 
 
 
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" type="password"
+                name="password" required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
             <div class="text-sm mt-2 flex items-center justify-end">
                 @if (Route::has('password.request'))
-                <a class="font-semibold text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('¿Has olvidado tu contraseña?') }}
-                </a>
-            @endif</div>
+                    <a class="font-semibold text-indigo-600 hover:text-indigo-500"
+                        href="{{ route('password.request') }}" wire:navigate>
+                        {{ __('¿Has olvidado tu contraseña?') }}
+                    </a>
+                @endif
+            </div>
         </div>
 
         <!-- Remember Me

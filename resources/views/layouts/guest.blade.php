@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }} " >
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }} ">
 
 <head>
     <meta charset="utf-8">
@@ -20,16 +20,21 @@
     <div class="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-10 sm:pt-0">
 
         <div>
-            <a href="/" class="transition-transform hover:scale-105 inline-block">
-                <x-application-logo class="w-20 h-20 fill-current text-indigo-600 drop-shadow-sm" />
+            <a href="/" class="flex items-center justify-center gap-3 transition-transform hover:scale-105 group">
+
+                <x-application-logo class="w-43 h-43 fill-current text-indigo-600 drop-shadow-sm" />
+
+                <h1
+                    class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    Ventor
+                </h1>
+
             </a>
         </div>
 
-        <h2 class="mt-6 text-center text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
-            Inicia sesión en tu cuenta
-        </h2>
 
-        <div class="w-full sm:max-w-md mt-8 px-8 py-10 bg-white shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden sm:rounded-3xl relative z-10 animate-view">
+        <div
+            class="w-full sm:max-w-md mt-8 px-8 py-10 bg-white shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden sm:rounded-3xl relative z-10 animate-view">
             {{ $slot }}
         </div>
 
