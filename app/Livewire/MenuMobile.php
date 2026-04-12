@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -20,7 +21,7 @@ class MenuMobile extends Component
     {
         // 1. Activamos la clase CSS de salida
         $this->isClosing = true;
-        
+
         // 2. Le avisamos a nuestro script de la vista que empiece a contar
         $this->dispatch('start-closing-timer');
     }
@@ -32,6 +33,8 @@ class MenuMobile extends Component
         $this->isOpen = false;
         $this->isClosing = false;
     }
+
+
 
     public function render()
     {

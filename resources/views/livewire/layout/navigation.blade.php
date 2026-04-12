@@ -1,3 +1,21 @@
+<?php
+
+use App\Livewire\Actions\Logout;
+use Livewire\Volt\Component;
+
+new class extends Component
+{
+    /**
+     * Log the current user out of the application.
+     */
+    public function logout(Logout $logout): void
+    {
+        $logout();
+
+        $this->redirect('/', navigate: true);
+    }
+}; ?>
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-9 py-4 sm:px-6 lg:px-8">
@@ -7,7 +25,7 @@
                 <div class="flex lg:flex-1">
                     <a href="{{ route('inicio') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
                         <x-application-logo />
-                        
+
                     </a>
                     <span class="text-xl font-bold tracking-tight text-slate-900 px-3 py-4.5">Ventor</span>
                 </div>
@@ -20,11 +38,11 @@
                     <x-nav-link :href="route('gastos')" :active="request()->routeIs('gastos')" wire:navigate>
                         {{ __('Mis gastos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
+                    <x-nav-link :href="route('presupuestos')" :active="request()->routeIs('presupuestos')" wire:navigate>
                         {{ __('Mis presupuestos') }}
                     </x-nav-link>
-                    
-                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
+
+                    <x-nav-link :href="route('reportes')" :active="request()->routeIs('reportes')" wire:navigate>
                         {{ __('Analisis') }}
                     </x-nav-link>
                 </div>
@@ -68,5 +86,5 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    
+
 </nav>

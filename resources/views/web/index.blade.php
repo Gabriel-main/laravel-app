@@ -15,10 +15,10 @@
                 entender exactamente a dónde va cada centavo.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button
+                <a href="{{ route('register') }}"
                     class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition transform hover:-translate-y-1">
                     Comenzar ahora
-                </button>
+                </a>
             </div>
 
             <div class="mt-16 relative max-w-5xl mx-auto">

@@ -5,19 +5,19 @@
         </svg>
     </button>
 
-    <div x-data="{ show: @entangle('showModal') }" 
-         x-show="show" 
-         class="fixed inset-0 z-[100] flex items-center justify-center px-10 py-14 bg-slate-900/60 backdrop-blur-sm"
+    <div x-data="{ show: @entangle('showModal') }"
+         x-show="show"
+         class="fixed inset-0 z-100 flex items-center justify-center px-10 py-14 bg-slate-900/60 backdrop-blur-sm"
          x-cloak>
-        
-        <div x-show="show" 
+
+        <div x-show="show"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0"
              x-transition:enter-end="opacity-100"
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100"
              x-transition:leave-end="opacity-0"
-             class="absolute inset-0 bg-slate-900/40" 
+             class="absolute inset-0 bg-slate-900/40"
              wire:click="cerrar"></div>
 
         <div x-show="show"
