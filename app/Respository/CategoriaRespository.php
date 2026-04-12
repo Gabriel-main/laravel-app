@@ -10,4 +10,16 @@ class CategoriaRespository
     {
         $this->model = $model;
     }
+
+    public function create($data)
+    {
+        return $this->model->create($data);
+    }
+
+    public function findByUserId(int $id)
+    {
+        return $this->model::where('user_id', $id)
+            ->orderBy('name', 'asc')
+            ->get();
+    }
 }
