@@ -1,12 +1,11 @@
 <div>
-<<<<<<< HEAD
-    {{-- Success is as dangerous as failure. --}}
-=======
     <div wire:click="abrir"
         class="flex-1 bg-white border border-slate-200 p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-slate-50 transition shadow-sm active:scale-95 cursor-pointer">
-        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center pointer-events-none">
+        <div
+            class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center pointer-events-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                </path>
             </svg>
         </div>
         <span class="text-xs font-bold text-slate-700 pointer-events-none">Gasto</span>
@@ -31,9 +30,11 @@
 
             <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                 <h3 class="text-lg font-bold text-gray-800">Registrar Nuevo Gasto</h3>
-                <button type="button" @click="show = false; $wire.cerrar()" class="text-gray-400 hover:text-red-500 transition-colors">
+                <button type="button" @click="show = false; $wire.cerrar()"
+                    class="text-gray-400 hover:text-red-500 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -50,7 +51,9 @@
                                 <option value="VES">Bs (VES)</option>
                                 <option value="EUR">EUR (€)</option>
                             </select>
-                            @error('moneda') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                            @error('moneda')
+                                <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="sm:col-span-2">
@@ -58,7 +61,9 @@
                             <input type="number" id="monto" wire:model="monto" step="0.01" required
                                 class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 px-4 transition-colors"
                                 placeholder="0.00">
-                            @error('monto') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                            @error('monto')
+                                <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 
@@ -67,29 +72,50 @@
                         <input type="text" id="descripcion" wire:model="descripcion" required
                             class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors"
                             placeholder="Ej. Compra de supermercado">
-                        @error('descripcion') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                        @error('descripcion')
+                            <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="categoria" class="block text-sm font-bold text-gray-700 mb-1">Categoría</label>
-                            <select id="categoria" wire:model="categoria" required
-                                class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors">
-                                <option value="">Selecciona...</option>
-                                <option value="comida">Comida</option>
-                                <option value="servicios">Servicios</option>
-                                <option value="transporte">Transporte</option>
-                                <option value="entretenimiento">Entretenimiento</option>
-                                <option value="otros">Otros</option>
-                            </select>
-                            @error('categoria') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                            <div class="flex justify-between items-center mb-1">
+                                <label for="categoria" class="block text-sm font-bold text-gray-700">Categoría</label>
+                                <button type="button" wire:click="$toggle('creandoNuevaCategoria')"
+                                    class="text-[10px] uppercase tracking-wider font-extrabold text-emerald-600 hover:text-emerald-700">
+                                    {{ $creandoNuevaCategoria ? '✕ Cancelar' : '+ Nueva' }}
+                                </button>
+                            </div>
+
+                            @if (!$creandoNuevaCategoria)
+                                <select id="categoria" wire:model="categoria_id" required
+                                    class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors">
+                                    <option value="">Selecciona...</option>
+                                    @foreach ($categorias as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            @else
+                                <input type="text" wire:model="nuevaCategoriaNombre"
+                                    class="block w-full rounded-xl border-emerald-300 bg-emerald-50/30 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 px-4 transition-colors"
+                                    placeholder="Nombre de la categoría..." autofocus>
+                            @endif
+
+                            @error('categoria_id')
+                                <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
+                            @error('nuevaCategoriaNombre')
+                                <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="fecha" class="block text-sm font-bold text-gray-700 mb-1">Fecha</label>
                             <input type="date" id="fecha" wire:model="fecha" required
                                 class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors">
-                            @error('fecha') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                            @error('fecha')
+                                <span class="text-xs text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -102,7 +128,8 @@
                     <button type="submit"
                         class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-bold hover:bg-emerald-700 transition-all active:scale-95 shadow-sm shadow-emerald-200 flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 13l4 4L19 7" />
                         </svg>
                         Guardar
                     </button>
@@ -110,5 +137,4 @@
             </form>
         </div>
     </div>
->>>>>>> 1ac3cc7480499b0c209c6c40257516068ebbab76
 </div>
