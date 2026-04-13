@@ -31,3 +31,14 @@ html {
 .animate-view {
     animation: view-fade-in 0.4s ease-out forwards;
 }
+
+
+/* Animación para el SELECT */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

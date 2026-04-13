@@ -203,27 +203,24 @@
                                 x-transition:enter-end="opacity-100 scale-100"
                                 x-transition:leave="transition ease-in duration-200 absolute w-full top-0"
                                 x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                                class="flex gap-2">
-
-
-
+                                class="flex items-end gap-2">
                                 <div class="relative flex-1">
+                                    <x-ui-label value="Nombre de la nueva categoría" />
 
-                                    <input type="text" wire:model="nuevaCategoriaNombre"
-                                        class="block w-full pl-9 rounded-xl border-emerald-300 bg-emerald-50/50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 shadow-sm"
-                                        placeholder="Nombre nueva categoría...">
+                                    <x-ui-input wire:model="categoriaForm.name" placeholder="Ej. Ropa, Comida..."
+                                        :error="$errors->has('categoriaForm.name')" />
 
+                                    @error('categoriaForm.name')
+                                        <p class="text-[10px] text-red-500 font-bold uppercase mt-1 px-1 tracking-tight">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
                                 </div>
 
-
-
                                 <button type="button" wire:click="guardarCategoria"
-                                    class="px-4 py-2.5 bg-emerald-100 text-emerald-700 font-bold rounded-xl active:scale-95 transition-all">
-
+                                    class="h-[46px] px-6 bg-emerald-100 text-emerald-700 font-bold rounded-2xl active:scale-95 transition-all hover:bg-emerald-200 flex items-center justify-center {{ $errors->has('categoriaForm.name') ? 'mb-5' : '' }}">
                                     Crear
-
                                 </button>
-
                             </div>
 
                         </div>

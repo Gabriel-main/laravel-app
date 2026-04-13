@@ -5,10 +5,14 @@ namespace App\Livewire\Gastos;
 use Livewire\Component;
 use App\Services\Categoria\CategoriaServices;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use App\Livewire\Forms\CategoriaForm;
+
 
 class IngresaGasto extends Component
 {
     protected CategoriaServices $services;
+    public CategoriaForm $categoriaForm;
     public function boot(CategoriaServices $services)
     {
         $this->services = $services;
@@ -33,12 +37,9 @@ class IngresaGasto extends Component
 
     public function guardarCategoria()
     {
-        $this->validate(['nuevaCategoriaNombre' => 'required|min:3']);
+
         try {
-            $nueva = $this->services->crearNuevaCategoria([
-                'name' => $this->nuevaCategoriaNombre,
-                'type' => 'expense'
-            ]);
+            $nueva = $this->categoriaForm->store($this->services);
 
             // Feedback inmediato: Seleccionamos la nueva y cerramos el modo creación
             $this->categoria_id = $nueva->id;
@@ -55,6 +56,17 @@ class IngresaGasto extends Component
                 'message' => 'Error: No se pudo guardar.',
                 'type' => 'error'
             ]);
+        }
+    }
+    public function updated($propertyName)
+    {
+        // Si lo que cambió empieza por 'categoriaForm.'
+        if (str_starts_with($propertyName, 'categoriaForm.')) {
+            // Obtenemos solo el nombre del campo (ej. 'name')
+            $fieldName = str_replace('categoriaForm.', '', $propertyName);
+
+            // Le pedimos al form que valide ese campo específico
+            $this->categoriaForm->validateField($fieldName);
         }
     }
 
