@@ -18,7 +18,7 @@
                         </svg>
                     </span>
                 </div>
-                <button
+                <div
                     class="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-700 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-50 group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -29,7 +29,7 @@
                         class="absolute right-16 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                         Nuevo Gasto
                     </span>
-                </button>
+                </div>
             </div>
         </div>
 

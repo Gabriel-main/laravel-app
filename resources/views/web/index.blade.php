@@ -1,6 +1,6 @@
 <x-home-layout>
 
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-12">
+    <section class=" pt-32 pb-20 lg:pt-48 lg:pb-32 px-12">
         <div class="max-w-7xl mx-auto text-center">
             <span
                 class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-5">
@@ -16,7 +16,7 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="{{ route('register') }}"
-                    class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition transform hover:-translate-y-1">
+                    class="bg-blue-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition transform hover:-translate-y-1">
                     Comenzar ahora
                 </a>
             </div>

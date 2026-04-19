@@ -47,15 +47,17 @@ class IngresaGasto extends Component
             $this->nuevaCategoriaNombre = '';
 
             // Opcional: enviar una notificación interna
-            $this->dispatch('notify', [
-                'message' => '¡Categoria guardado con éxito!',
-                'type' => 'success'
-            ]);
+            $this->dispatch(
+                'notify',
+                message: '¡Categoría guardada con éxito!',
+                type: 'success'
+            );
         } catch (\Exception $e) {
-            $this->dispatch('notify', [
-                'message' => 'Error: No se pudo guardar.',
-                'type' => 'error'
-            ]);
+            $this->dispatch(
+                'notify',
+                message: 'Error: ' . $e->getMessage(),
+                type: 'error'
+            );
         }
     }
     public function updated($propertyName)

@@ -210,11 +210,6 @@
                                     <x-ui-input wire:model="categoriaForm.name" placeholder="Ej. Ropa, Comida..."
                                         :error="$errors->has('categoriaForm.name')" />
 
-                                    @error('categoriaForm.name')
-                                        <p class="text-[10px] text-red-500 font-bold uppercase mt-1 px-1 tracking-tight">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
                                 </div>
 
                                 <button type="button" wire:click="guardarCategoria"

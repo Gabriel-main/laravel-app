@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="font-sans antialiased flex flex-col min-h-screen">
+<body class=" font-sans antialiased flex flex-col min-h-screen">
 
     <livewire:layout.navigation />
     <main class="animate-view flex-1" wire:key="{{ Request::url() }}">
