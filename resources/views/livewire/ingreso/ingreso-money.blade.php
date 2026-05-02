@@ -4,7 +4,7 @@
         class="flex-1 bg-white border border-slate-200 p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-slate-50 transition shadow-sm active:scale-95 cursor-pointer">
 
         <div
-            class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center pointer-events-none">
+            class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center pointer-events-none">
 
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
@@ -16,7 +16,7 @@
 
         </div>
 
-        <span class="text-xs font-bold text-slate-700 pointer-events-none">Gasto</span>
+        <span class="text-xs font-bold text-slate-700 pointer-events-none">Ingreso</span>
 
     </div>
 
@@ -47,7 +47,7 @@
 
             <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
 
-                <h3 class="text-lg font-bold text-gray-800">Registrar Nuevo Gasto</h3>
+                <h3 class="text-lg font-bold text-gray-800">Registrar Nuevo Ingreso</h3>
 
                 <button type="button" @click="show = false; $wire.cerrar()"
                     class="text-gray-400 hover:text-red-500 transition-colors">
@@ -77,7 +77,7 @@
 
                             <label for="fecha" class="block text-sm font-bold text-gray-700 mb-1">Fecha</label>
 
-                            <input type="date" id="fecha" wire:model="fecha"
+                            <input type="date" id="fecha" wire:model="fecha" required
                                 class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors">
 
                             @error('fecha')
@@ -90,7 +90,7 @@
 
                             <label for="moneda" class="block text-sm font-bold text-gray-700 mb-1">Moneda</label>
 
-                            <select id="moneda" wire:model="moneda" 
+                            <select id="moneda" wire:model="moneda" required
                                 class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors">
 
                                 <option value="USD">USD</option>
@@ -111,7 +111,7 @@
 
                             <label for="monto" class="block text-sm font-bold text-gray-700 mb-1">Monto</label>
 
-                            <input type="number" id="monto" wire:model="monto" step="0.01"
+                            <input type="number" id="monto" wire:model="monto" step="0.01" required
                                 class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 px-3 transition-colors"
                                 placeholder="0.00">
 
@@ -129,7 +129,7 @@
 
                         <label for="descripcion" class="block text-sm font-bold text-gray-700 mb-1">Descripción</label>
 
-                        <input type="text" id="descripcion" wire:model="descripcion" 
+                        <input type="text" id="descripcion" wire:model="descripcion" required
                             class="block w-full rounded-xl border-gray-300 bg-gray-50 border focus:bg-white focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm py-2.5 transition-colors"
                             placeholder="Ej. Compra de supermercado">
 
@@ -207,7 +207,7 @@
                                 <div class="relative flex-1">
                                     <x-ui-label value="Nombre de la nueva categoría" />
 
-                                    <x-ui-input wire:model="categoriaForm.name" placeholder="Ej. Ropa, Comida..."
+                                    <x-ui-input wire:model="categoriaForm.name" placeholder="Ej. Trabajo, Bonos..."
                                         :error="$errors->has('categoriaForm.name')" />
 
                                 </div>

@@ -35,8 +35,12 @@
 
             <div class="flex gap-4 mb-8">
                 <div class="col-span-2 sm:col-span-1 w-full">
+                    <livewire:ingreso.ingreso-money />
+                </div>
+                <div class="col-span-2 sm:col-span-1 w-full">
                     <livewire:gastos.ingresa-gasto />
                 </div>
+
 
                 <!--<button
                     class="w-full bg-white border border-slate-200 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-slate-50 transition shadow-sm active:scale-95">

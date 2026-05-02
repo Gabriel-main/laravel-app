@@ -4,10 +4,7 @@ namespace App\Livewire\Gastos;
 
 use Livewire\Component;
 use App\Services\Categoria\CategoriaServices;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use App\Livewire\Forms\CategoriaForm;
-
 
 class IngresaGasto extends Component
 {
@@ -22,7 +19,7 @@ class IngresaGasto extends Component
     // Propiedades de la Categoría
     public $categoria_id;
     public $creandoNuevaCategoria = false;
-    public $nuevaCategoriaNombre = '';
+    public $nuevaCategoriaNombre = "";
 
     public function abrir()
     {
@@ -34,38 +31,36 @@ class IngresaGasto extends Component
         $this->showModal = false;
     }
 
-
     public function guardarCategoria()
     {
-
         try {
             $nueva = $this->categoriaForm->store($this->services);
 
             // Feedback inmediato: Seleccionamos la nueva y cerramos el modo creación
             $this->categoria_id = $nueva->id;
             $this->creandoNuevaCategoria = false;
-            $this->nuevaCategoriaNombre = '';
+            $this->nuevaCategoriaNombre = "";
 
             // Opcional: enviar una notificación interna
             $this->dispatch(
-                'notify',
-                message: '¡Categoría guardada con éxito!',
-                type: 'success'
+                "notify",
+                message: "¡Categoría guardada con éxito!",
+                type: "success",
             );
         } catch (\Exception $e) {
             $this->dispatch(
-                'notify',
-                message: 'Error: ' . $e->getMessage(),
-                type: 'error'
+                "notify",
+                message: "Error: " . $e->getMessage(),
+                type: "error",
             );
         }
     }
     public function updated($propertyName)
     {
         // Si lo que cambió empieza por 'categoriaForm.'
-        if (str_starts_with($propertyName, 'categoriaForm.')) {
+        if (str_starts_with($propertyName, "categoriaForm.")) {
             // Obtenemos solo el nombre del campo (ej. 'name')
-            $fieldName = str_replace('categoriaForm.', '', $propertyName);
+            $fieldName = str_replace("categoriaForm.", "", $propertyName);
 
             // Le pedimos al form que valide ese campo específico
             $this->categoriaForm->validateField($fieldName);
@@ -75,13 +70,14 @@ class IngresaGasto extends Component
     public function guardar()
     {
         // 1. Validar según el estado
-
     }
 
     public function render()
     {
-        return view('livewire.gastos.ingresa-gasto', [
-            'categorias' => $this->services->obtenerCategoriasDelUsuario()
+        return view("livewire.gastos.ingresa-gasto", [
+            "categorias" => $this->services->obtenerCategoriasDelUsuario(
+                "expense",
+            ),
         ]);
     }
 }

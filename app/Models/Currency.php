@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class categoria extends Model
+class Currency extends Model
 {
-
     use HasFactory;
-
-    protected $table = 'categories';
-
 
     protected $fillable = [
         'name',
-        'type',
-        'user_id'
+        'code',
+        'symbol',
     ];
 
-    public function user()
+    public function transactions()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasMany(Transaction::class);
     }
 }

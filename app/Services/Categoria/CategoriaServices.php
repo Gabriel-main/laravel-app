@@ -15,16 +15,17 @@ class CategoriaServices
 
     public function crearNuevaCategoria($data)
     {
-        $data['user_id'] = Auth::id();
+        $data["user_id"] = Auth::id();
 
         return $this->repository->create($data);
     }
 
-    public function obtenerCategoriasDelUsuario(): Collection
+    public function obtenerCategoriasDelUsuario(string $tipo): Collection
     {
         $userId = Auth::id();
 
+        $resultado = $this->repository->findByUserId($userId);
 
-        return $this->repository->findByUserId($userId);
+        return $resultado->where("type", $tipo);
     }
 }

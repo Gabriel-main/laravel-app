@@ -2,11 +2,11 @@
 
 namespace App\Respository;
 
-use App\Models\categoria;
+use App\Models\Categoria;
 
 class CategoriaRespository
 {
-    public function __construct(protected categoria $model)
+    public function __construct(protected Categoria $model)
     {
         $this->model = $model;
     }
@@ -18,8 +18,9 @@ class CategoriaRespository
 
     public function findByUserId(int $id)
     {
-        return $this->model::where('user_id', $id)
-            ->orderBy('name', 'asc')
+        return $this->model
+            ::where("user_id", $id)
+            ->orderBy("name", "asc")
             ->get();
     }
 }
