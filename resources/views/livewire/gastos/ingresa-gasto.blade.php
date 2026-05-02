@@ -23,7 +23,7 @@
 
 
     <div x-data="{ show: @entangle('showModal') }" x-show="show"
-        class="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-0 py-10 sm:py-0 bg-slate-900/60 backdrop-blur-sm cursor-default"
+        class="fixed inset-0 z-100 flex items-center justify-center px-4 sm:px-0 py-10 sm:py-0 bg-slate-900/60 backdrop-blur-sm cursor-default"
         x-cloak>
 
 
@@ -41,7 +41,7 @@
             x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="opacity-100 transform scale-100 translate-y-0"
             x-transition:leave-end="opacity-0 transform scale-90 translate-y-4"
-            class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden relative z-10" @click.stop>
+            class="bg-white w-full max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl rounded-2xl shadow-2xl overflow-hidden relative z-10 mx-4 sm:mx-0" @click.stop role="dialog" aria-label="Registrar Nuevo Gasto">
 
 
 

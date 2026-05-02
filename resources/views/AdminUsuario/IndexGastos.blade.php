@@ -38,7 +38,7 @@
                     <livewire:gastos.ingresa-gasto />
                 </div>
 
-                <button
+                <!--<button
                     class="w-full bg-white border border-slate-200 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-slate-50 transition shadow-sm active:scale-95">
                     <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@
                         </svg>
                     </div>
                     <span class="text-xs font-bold text-slate-700">Presupuesto</span>
-                </button>
+                </button>-->
             </div>
 
             <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">

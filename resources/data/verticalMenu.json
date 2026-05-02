@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Inicio",
+        "route": "inicio",
+        "icon": "home",
+        "enabled": true
+    },
+    {
+        "name": "Mis gastos",
+        "route": "gastos",
+        "icon": "cash",
+        "enabled": true
+    },
+    {
+        "name": "Mis presupuestos",
+        "route": "presupuestos",
+        "icon": "chart",
+        "enabled": false
+    },
+    {
+        "name": "Análisis",
+        "route": "reportes",
+        "icon": "analytics",
+        "enabled": false
+    },
+    {
+        "name": "Configuración",
+        "route": "profile",
+        "icon": "settings",
+        "enabled": false
+    }
+]

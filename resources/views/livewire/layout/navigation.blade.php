@@ -3,88 +3,94 @@
 use App\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
 
-new class extends Component
-{
-    /**
-     * Log the current user out of the application.
-     */
+new class extends Component {
+    public $menuItems = [];
+
+    public function mount()
+    {
+        $jsonPath = resource_path("data/verticalMenu.json");
+        if (file_exists($jsonPath)) {
+            $this->menuItems = json_decode(file_get_contents($jsonPath), true);
+        }
+    }
+
     public function logout(Logout $logout): void
     {
         $logout();
-
-        $this->redirect('/', navigate: true);
+        $this->redirect("/", navigate: true);
     }
-}; ?>
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-9 py-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex lg:flex-1">
-                    <a href="{{ route('inicio') }}" wire:navigate class="-m-1.5 p-1.5 flex items-center gap-3">
-                        <x-application-logo />
+    public function getIconPath($name)
+    {
+        $icons = [
+            "home" =>
+                "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+            "cash" =>
+                "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z",
+            "chart" =>
+                "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+            "analytics" =>
+                "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+            "settings" =>
+                "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+            "logout" =>
+                "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1",
+        ];
+        return $icons[$name] ?? $icons["home"];
+    }
+};
+?>
 
+<div>
+    <aside class="hidden md:flex md:flex-col md:w-64 bg-white border-r border-gray-200 min-h-screen">
+        <div class="flex items-center gap-3 px-6 py-5 border-b border-gray-100">
+            <x-application-logo class="w-8 h-8 text-blue-600" />
+            <span class="text-xl font-bold tracking-tight text-slate-900">Ventor</span>
+        </div>
+
+        <nav x-data="{ open: false }" class="flex-1 px-4 py-6 space-y-2">
+            @foreach($menuItems as $item)
+                @if($item['enabled'])
+                    <a href="{{ route($item['route']) }}"
+                       wire:navigate
+                       class="flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors
+                       {{ request()->routeIs($item['route']) ? 'bg-slate-900 text-white shadow-md' : 'text-gray-700 hover:bg-gray-100' }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="{{ $this->getIconPath($item['icon']) }}"/>
+                        </svg>
+                        {{ __($item['name']) }}
                     </a>
-                    <span class="text-xl font-bold tracking-tight text-slate-900 px-3 py-4.5">Ventor</span>
+                @endif
+            @endforeach
+        </nav>
+
+        <div class="border-t border-gray-200 p-4">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold shadow-sm">
+                    {{ substr(auth()->user()->name, 0, 1) }}
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-13 sm:-my-px sm:ms-68 sm:flex">
-                    <x-nav-link :href="route('inicio')" :active="request()->routeIs('inicio')" wire:navigate>
-                        {{ __('Inicio') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('gastos')" :active="request()->routeIs('gastos')" wire:navigate>
-                        {{ __('Mis gastos') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('presupuestos')" :active="request()->routeIs('presupuestos')" wire:navigate>
-                        {{ __('Mis presupuestos') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('reportes')" :active="request()->routeIs('reportes')" wire:navigate>
-                        {{ __('Analisis') }}
-                    </x-nav-link>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">{{ auth()->user()->name }}</p>
                 </div>
             </div>
+            <button wire:click="logout" class="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                {{ __('Cerrar sesión') }}
+            </button>
+        </div>
+    </aside>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Perfil') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <button wire:click="logout" class="w-full text-start">
-                            <x-dropdown-link>
-                                {{ __('Cerrar sesión') }}
-                            </x-dropdown-link>
-                        </button>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="py-6 flex items-center sm:hidden">
+<nav class="md:hidden bg-white border-b border-gray-100 shadow-sm sticky top-0 z-40">
+        <div class="px-6 py-4 flex items-center w-full">
+            <a href="{{ route('inicio') }}" wire:navigate class="flex items-center gap-2">
+                <x-application-logo class="w-8 h-8 rounded-lg shadow-sm" />
+                <span class="text-lg font-bold tracking-tight text-slate-900">Ventor</span>
+            </a>
+            <div class="ml-auto flex items-center">
                 <livewire:menu-mobile-admin />
             </div>
         </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-
-</nav>
+    </nav>
+</div>
