@@ -5,23 +5,20 @@ services:
             context: .
             dockerfile: Dockerfile
             args:
-                # 1. Pasamos el ID de tu .env directamente al Dockerfile al construir
                 uid: ${DOCKER_UID:-1000}
         image: laravel
         container_name: laravel-app-web
-        init: true
+        init: true # Evita contenedores zombies
         restart: unless-stopped
         working_dir: /var/www
         ports:
-            - "5179:5173"
-
+            - "5173:5173" # Puerto para Vite
         environment:
             - VITE_PORT=5173
         volumes:
             - ./:/var/www
         networks:
             - laravel-network
-
         depends_on:
             - mysql
         extra_hosts:
