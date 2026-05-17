@@ -9,10 +9,11 @@ services:
                 uid: ${DOCKER_UID:-1000}
         image: laravel
         container_name: laravel-app-web
+        init: true
         restart: unless-stopped
         working_dir: /var/www
         ports:
-            - "5173:5173"
+            - "5179:5173"
 
         environment:
             - VITE_PORT=5173
