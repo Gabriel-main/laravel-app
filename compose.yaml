@@ -4,8 +4,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-            args:
-                uid: ${DOCKER_UID:-1000}
         image: laravel
         container_name: laravel-app-web
         init: true # Evita contenedores zombies

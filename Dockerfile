@@ -1,9 +1,5 @@
 FROM php:8.3-fpm
 
-# Definir argumentos para hacer los permisos dinámicos
-ARG uid=1000
-ARG user=appuser
-
 # Instalar dependencias del sistema y extensiones de PHP
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -24,11 +20,6 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Crear el usuario idéntico al tuyo de Ubuntu para evitar problemas de permisos
-RUN useradd -G www-data,root -u $uid -d /home/$user $user \
-    && mkdir -p /home/$user/.composer \
-    && chown -R $user:$user /home/$user
-
 # Configurar directorio de trabajo principal (Sincronizado a /var/www)
 WORKDIR /var/www
 
@@ -37,11 +28,8 @@ COPY . /var/www
 
 # Ajuste de permisos para Laravel
 RUN chown -R $user:www-data /var/www \
-    && find /var/www -type d -exec chmod 775 {} \; \
-    && find /var/www -type f -exec chmod 664 {} \;
-
-# Cambiar a nuestro nuevo usuario seguro para desarrollo
-USER $user
+    && chmod -R 775 /var/www/storage \
+    && chmod -R 775 /var/www/bootstrap/cache
 
 # Exponer puerto de PHP-FPM
 EXPOSE 9000
